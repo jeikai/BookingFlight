@@ -1,0 +1,57 @@
+        .title, .subtitle{font-family: Arial, Helvetica, sans-serif;}
+		.title{
+			font-size: 50px;
+			font-weight: bold;
+			background: linear-gradient(135deg, #71b7e6, #9b59b6);
+			text-decoration: underline overline;
+		}
+		.subtitle{font-size: 30px;}
+		.divtitle{width: auto;
+			margin-top: 230px;
+			margin-left: 450px;
+			float: left;
+		}
+		
+		.login{background: white;
+			width: 500px;
+			height: 500px;
+			margin-top: 140px;
+			float: left;
+			margin-left: 50px;
+			border-radius: 20px;
+		}
+		.textbox, .logIn {
+			width: 450px;
+			height: 70px;
+			border-radius: 10px;
+			border: 1px #eceeef solid;
+			font-size: 15px;
+		}
+		.type{margin-top: 15px;
+			margin-left: 30px;
+		}
+		.logIn{color: white;
+			background: linear-gradient(135deg, #71b7e6, #9b59b6);
+			font-size: 20px;
+			font-weight: bold;
+		}
+		.logIn:hover {
+			background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+		}
+		.forget_pass{color: #207af2;
+			text-decoration: none;
+			padding-left: 150px;
+			font-size: 20px;
+		}
+		.new_account{background: #42b72a;
+			font-weight: bold;
+			color: white;
+			border-radius: 10px;
+			border: 1px #eceeef solid;
+			font-size: 15px;
+			margin-left: 140px;
+			width: 200px;
+			height: 50px;}
+		.new_account:hover {
+			border: 1px black solid;
+		}

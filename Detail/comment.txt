@@ -1,0 +1,92 @@
+1em = 16px
+navbar-expand-mb: khi kích thước medium trở lên thì tự động expand ra
+navbar-light, bg-light: màu sắc là màu sáng
+sticky-top: dính chặt phía trên đỉnh
+container-fluid: chiếm toàn bộ chiều ngang
+navbar-branch: dùng để làm logo
+navbar-toggle: nút toggle - tức bấm 1 lần thì hiện ra, bấm lần nữa thì biến mất
+navbar-toggler-icon: giống biểu tượng menu có 3 gạch
+navbar-nav: thể hiện các đường link khi ta co, thay đổi kích thước cửa sổ
+ml-auto: automatically margin left
+carousel: dùng được dạng slide show của bootstrap
+slide: trượt qua lại giống slide show
+carousel-indicators: thanh nhỏ bên dưới để chuyển sang trang khác
+btn-outline-light: button ko có màu nhưng viền sáng
+btn-lg: nút to
+btn-primary: nút có màu xanh da trời
+container-fluid: cho tràn sang 2 bên
+text-center: chữ phân bố ra giữa
+col-12: đối tất cả màn hình thiết bị, gộp 12 dòng làm 1. Tức là nằm tràn ra từ trái sang phải
+my-4: margin theo trục y tức margin-top và margin-bottom
+card: giống như card bth có tên, chức danh....
+card-title: tiêu đề của card
+card-text: text trong card
+card-img-top: ảnh ở vị trí trên cùng
+
+position:
+	static: mặc định là static. Các giá trị top, right, left, z-index ko có tác dụng
+			Vị trí sẽ được đặt theo thứ tự của flow code
+	relative: Vị trí sẽ được đặt theo thứ tự của flow code nhưng sẽ bị ảnh hưởng bởi các
+			thuộc tính khác như top, right,..... Khi rời sang vị trí khác vẫn sẽ có khoảng trống của nó
+	absolute: Không theo vị trí của thứ tự flow code. Khi rời sang vị trí khác thì sẽ ko còn khoảng trống đó nữa
+			nó được đặt theo vị trí gần nhất của vị trí trước đó. Nếu không nó sẽ được đặt theo khối chứa ban đầu
+	sticky: vị trí stick theo cơ chế cuộn tức là kể cả khi có cuộn scroll thì vị trí vấn giữ nguyên trên màn hình
+z-index: thứ tự sắp xếp của 1 phần tử
+display: 
+	flex: giúp các thành phần hiển thị linh hoạt hơn.
+		Ví dụ như giúp set 3 hộp thành hàng ngang thay vì để dọc
+	- Có các thuộc tính khác như:
+		flex-grow
+			Ví dụ: flex-grow: 3; //rộng gấp 3 lần thuộc tính khác
+		flex-wrap:
+			nowrap: các flex sẽ được đặt trên 1 dòng
+			wrap: flex item tự động tách dòng từ trên xuống
+			wrap-reverse: flex item tách nhiều dòng từ dưới lên
+		align-items: điều chỉnh vị trí và căn chỉnh item bên trong theo chiều dọc
+			stretch: fit container
+			center: vị trí center của container
+			flex-start: vị trí ban đầu của container
+			flex-end: theo vị trí kết thúc của container
+			baseline: theo vị trí đường cơ sở của container
+		justify-content: tự động điều chỉnh không gian trống khi các phần tử cùng 1 hàng
+
+text-shadow: h-shadow v-shadow blur-radius color|none|initial|inherit;
+
+ANIMATION CSS 
+	animation-duration: animation sẽ diễn ra trong bao lâu
+	@keyframes: thay đổi style hiện tại sang style khác sau thời gian nhất định
+	Ví dụ:
+		/* The animation code */
+		@keyframes example {
+		0%   {background-color: red;}
+		25%  {background-color: yellow;}
+		50%  {background-color: blue;}
+		100% {background-color: green;}
+		}
+
+		/* The element to apply the animation to */
+		div {
+		width: 100px;
+		height: 100px;
+		background-color: red;
+		animation-name: example;
+		animation-duration: 4s;
+		}
+	animation-delay: sẽ quyết định delay bao lâu thì animation mới chạy
+	animation-iteration-count: quyết định xem bao nhiêu lần thì animation thực hiện
+	animation-direction: quyết định xem sẽ được di chuyển như thế nào
+		normal: di chuyển chuyển tiếp
+		reverse: di chuyển ngược lại
+		alternate: di chuyển chuyển tiếp trước sau đó là ngược lại
+		alternate-reverse: di chuyển ngược lại trước sau đó là chuyển tiếp
+carousel
+	- Dùng id để điều khiển các phím chức năng
+	- class="carousel" để xác định thẻ div chứa 1 carousel-băng chuyền
+	- class="slide" thêm 1 Css transition and hiệu ứng animation, sẽ giúp items slide
+	- data-ride="carousel" bắt đầu hiệu ứng ngay khi page được load
+	- data-target: chỉ đến id của carousel
+	- data-slide: quyết định chuyển slide trước hay slide sau
+	- slide được chỉ định trong carousel-inner
+	- nội dung slide nằm ở trong carousel-item
+	- active phải được thêm vào, nếu ko sẽ ko có carousel
+	
