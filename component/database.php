@@ -1,6 +1,6 @@
 <?php
     define('SERVER', 'localhost');
-    define('DB_NAME', 'eProject');
+    define('DB_NAME', 'BookingFlight');
     define('DB_USER_NAME', 'root');
     define('DB_PASSWORD', '');
     

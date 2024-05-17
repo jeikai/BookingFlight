@@ -14,13 +14,11 @@ include './component/header.php';
         <div class="container">
             <div class="content-section">
                 <div class="title">
-                    <h2>Welcome To Bronx Luggage</h2>
+                    <h2>Welcome To Fun Flight</h2>
                 </div>
                 <div class="content">
 
-                    <p>The beauty of receiving high quality luggage is a truly amazing feeling. Great luggage can be passed down from family members who are experienced travelers. A high-quality set of luggage will last a lifetime. Bronx Luggage, located
-                        in the Festival Marketplace, offers a wide selection of luggage from affordable sets to the best brands on the market for all of your travel needs. We also stock Backpacks, travel accessories, briefcases and much more. You are
-                        supposed to create a Single-Page-Application and responsive Website for them with the below mentioned requirement specifications </p>
+                    <p>At Fun Flight, we believe that travel is not just about getting from point A to point B; it's about embarking on an adventure, immersing yourself in new cultures, and creating memories that will last a lifetime. That's why we're committed to providing you with an unparalleled flight booking experience that is simple, affordable, and tailored to your unique travel needs. </p>
 
                 </div>
                 <div class="social">
