@@ -11,7 +11,7 @@ CREATE TABLE Users(
 
 CREATE TABLE Orders(
     Id_don_hang INT PRIMARY KEY,
-    productName VARCHAR(150) NOT NULL,
+    flightName VARCHAR(150) NOT NULL,
     price VARCHAR(150) NOT NULL,
     quantity VARCHAR(150) NOT NULL,   
     userId INT,
@@ -22,7 +22,7 @@ CREATE TABLE Orders(
 
 CREATE TABLE OrderDetails(
     OrderDetailID INT PRIMARY KEY,
-    productId INT,
+    flightId INT,
     price FLOAT,
     quantity INT,
     userId INT
@@ -30,6 +30,7 @@ CREATE TABLE OrderDetails(
 
 CREATE TABLE Flight(
     flightId INT PRIMARY KEY,    
+    brand varchar(20) NOT NULL,
     startCity varchar(20) NOT NULL,
     endCity varchar(20) NOT NULL,
     startTime varchar(20) NOT NULL,
@@ -42,10 +43,10 @@ CREATE TABLE Flight(
 
 INSERT INTO Flight (flightId, startCity, endCity, startTime, endTime, totalCustomer, remainingCustomer, standardPrice, isRoundTrip)
 VALUES
-  (1, 'New York', 'Los Angeles', '2024-05-18 10:00:00', '2024-05-18 15:00:00', 150, 150, 250.00, 0),  
-  (2, 'London', 'Paris', '2024-05-19 08:30:00', '2024-05-19 11:00:00', 100, 100, 180.50, 0), 
-  (3, 'Tokyo', 'Singapore', '2024-05-20 12:15:00', '2024-05-21 08:45:00', 200, 200, 520.75, 1), 
-  (4, 'Berlin', 'Rome', '2024-05-21 17:45:00', '2024-05-22 14:00:00', 75, 75, 315.25, 1);
+  (1, 'Vietnam Airlines','New York', 'Los Angeles', '2024-05-18 10:00:00', '2024-05-18 15:00:00', 150, 150, 250.00, 0),  
+  (2, 'Jetstar', 'London', 'Paris', '2024-05-19 08:30:00', '2024-05-19 11:00:00', 100, 100, 180.50, 0), 
+  (3, 'Bamboo', 'Tokyo', 'Singapore', '2024-05-20 12:15:00', '2024-05-21 08:45:00', 200, 200, 520.75, 1), 
+  (4, 'Vietjet Air', 'Berlin', 'Rome', '2024-05-21 17:45:00', '2024-05-22 14:00:00', 75, 75, 315.25, 1);
 
 
 INSERT INTO Users(userId, userName, phoneNumber, password, address, role) VALUES 

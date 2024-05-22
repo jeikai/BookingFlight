@@ -3,11 +3,11 @@ include './component/header.php';
 
 if (isset($_POST['add_to_cart'])) {
 	$quantity = 1;
-	$productId = $_POST['flightId'];
+	$flightId = $_POST['flightId'];
 	$price = $_POST['price'];
 	$orderId = time();
 	try {
-		$sql = "SELECT * FROM orderdetails WHERE productId = '$productId';";
+		$sql = "SELECT * FROM orderdetails WHERE flightId = '$flightId';";
 		$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		$statement = $connection->prepare($sql);
 		$statement->execute();
@@ -16,13 +16,13 @@ if (isset($_POST['add_to_cart'])) {
 
 		//Kiểm tra xem dữ liệu bản ghi đã tồn tại hay chưa
 		if (count($result) > 0) {
-			$message[] = 'product already added to cart';
+			$message[] = 'Flight already added to cart';
 		} else {
 
-			$insert = "INSERT INTO  orderdetails(OrderDetailID, quantity, productId, price, userId) 
-					VALUES( $orderId, $quantity, $productId, $price, $userId);";
+			$insert = "INSERT INTO  orderdetails(OrderDetailID, quantity, flightId, price, userId) 
+					VALUES( $orderId, $quantity, $flightId, $price, $userId);";
 			$connection->prepare($insert)->execute();
-			$message[] = 'product added to cart succesfully';
+			$message[] = 'Flight added to cart succesfully';
 			$page = $_SERVER['PHP_SELF'];
 			$sec = "1.5";
 			header("Refresh: $sec; url=$page");
@@ -206,68 +206,17 @@ if ($time > '21:15') {
 		</div>
 	</div>
 </div>
-<!-- Category -->
-<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-	<div class="container-fluid padding">
-		<div class="row text-center padding">
-			<div class="col-xs-12 col-sm-6 col-md-4 ">
-				<i class="fa fa-child"></i>
-				<h3>CHILDREN</h3>
-				<p>4 - 12 years old</p>
-				<input type="radio" name="category" value="children" id="">
-			</div>
-			<div class="col-xs-12 col-sm-6 col-md-4">
-				<i class="fas fa-running"></i>
-				<h3>TEENAGER</h3>
-				<p>13 - 18 years old</p>
-				<input type="radio" value="teenager" name="category">
-			</div>
-			<div class="col-sm-12 col-md-4">
-				<i class="fas fa-hiking"></i>
-				<h3>ADULT</h3>
-				<p>> 18 years old</p>
-				<input type="radio" value="adult" name="category">
-
-			</div>
-
-		</div>
-
-		<hr class="my-4">
-	</div>
-
-	<!-- Gender -->
-	<div class="container-fluid padding">
-		<div class="row text-center padding">
-			<div class="col-md-4">
-
-				<i class="fa fa-female"></i>
-				<h3>FEMALE</h3>
-				<input type="radio" value="female" name="gender">
-			</div>
-			<div class="col-md-4">
-				<input type="submit" class="btn-lg" value="Find" name="" id="">
-			</div>
-			<div class="col-md-4">
-
-				<i class="fa fa-male"></i>
-				<h3>MALE</h3>
-				<input type="radio" value="male" name="gender">
-			</div>
-		</div>
-		<hr class="my-4">
-	</div>
-</form>
 
 <div class="container-fluid padding">
 	<div class="row text-center">
 		<div class="col-md-2 ">
-			<a href="home_page.php?search=Victorinox"><img src="./Ảnh_website/logo_1.png" alt="" style="width: 200px;height: 100px"></a>
+			<a href="home_page.php?search=Vietnam Airlines"><img src="./Ảnh_website/logo_1.png" alt="" style="width: 200px;height: 100px"></a>
 		</div>
 		<div class="col-md-2 ">
-			<a href="home_page.php?search=samsonite"><img src="./Ảnh_website/logo_2.png" alt="" style="width: 200px;height: 100px"></a>
+			<a href="home_page.php?search=jetstar"><img src="./Ảnh_website/logo_2.png" alt="" style="width: 200px;height: 100px"></a>
 		</div>
 		<div class="col-md-2 ">
-			<a href="home_page.php?search=hublot"><img src="./Ảnh_website/logo_3.png" alt="" style="width: 200px;height: 100px"></a>
+			<a href="home_page.php?search=bamboo"><img src="./Ảnh_website/logo_3.png" alt="" style="width: 200px;height: 100px"></a>
 		</div>
 		<div class="col-md-2 ">
 			<a href="home_page.php?search=fossil"><img src="./Ảnh_website/logo_4.png" alt="" style="width: 200px; height: 100px"></a>
@@ -284,67 +233,22 @@ if ($time > '21:15') {
 
 <!-- photos of products and their infor -->
 <?php
-$category = $_POST['category'] ?? '';
-$gender = $_POST['gender'] ?? '';
-if (isset($_POST['category']) && isset($_POST['gender'])) {
-	$sql = "SELECT * FROM Products WHERE categoryName = '$category' AND gender = '$gender'; ";
-	$statement = $connection->prepare($sql);
-	$statement->execute();
-	//Chế độ đọc dữ liệu ra
-	$result = $statement->setFetchMode(PDO::FETCH_ASSOC);
-	$sp = $statement->fetchAll();
-	foreach ($sp as $sp) {
-?>
-		<?php
-		include './detail_product.php';
-		?>
-	<?php
-	}
-} else if (isset($_POST['category'])) {
-	$sql = "SELECT * FROM Products WHERE categoryName = '$category'; ";
-	$statement = $connection->prepare($sql);
-	$statement->execute();
-	//Chế độ đọc dữ liệu ra
-	$result = $statement->setFetchMode(PDO::FETCH_ASSOC);
-	$sp = $statement->fetchAll();
-	foreach ($sp as $sp) {
-	?>
-		<?php
-		include './detail_product.php';
-		?>
-	<?php
-
-	}
-} else if (isset($_POST['gender'])) {
-	$sql = "SELECT * FROM Products WHERE gender = '$gender'; ";
-	$statement = $connection->prepare($sql);
-	$statement->execute();
-	//Chế độ đọc dữ liệu ra
-	$result = $statement->setFetchMode(PDO::FETCH_ASSOC);
-	$sp = $statement->fetchAll();
-	foreach ($sp as $sp) {
-	?>
-		<?php
-		include './detail_product.php';
-		?>
-	<?php
-	}
-} else if (isset($_GET['search'])) {
+if (isset($_GET['search'])) {
 	$ket_qua = $_GET['search'];
 	$array = explode(" ", $ket_qua);
-	$name = "productName LIKE '%" . $ket_qua . "%'; ";
+	$name = "brand LIKE '%" . $ket_qua . "%'; ";
 	// foreach( $array as $array) {
 	// 	$name .=	"productName LIKE '%".$array."%' OR ";
 	// }
 	// $name = rtrim($name, "OR ");
-	$sql = "SELECT * FROM Products WHERE $name";
+	$sql = "SELECT * FROM Flight WHERE $name";
 	$statement = $connection->prepare($sql);
 	$statement->execute();
 	//Chế độ đọc dữ liệu ra
 	$result = $statement->setFetchMode(PDO::FETCH_ASSOC);
 	$sp = $statement->fetchAll();
 	if (count($sp) > 0) {
-	?>
+?>
 		<div class="container-fluid padding">
 			<?php
 			foreach ($sp as $sp) {
@@ -362,8 +266,8 @@ if (isset($_POST['category']) && isset($_POST['gender'])) {
 	?>
 	<div class="container-fluid padding">
 		<hr>
-		<a name="Victorinox">
-			<h2 style="text-align: center;"><?php echo $filter = "Victorinox"; ?></h2>
+		<a name="Vietnam Airlines">
+			<h2 style="text-align: center;"><?php echo $filter = "Vietnam Airlines"; ?></h2>
 		</a>
 		<?php
 		$sp = select_from($filter, $connection);
@@ -374,8 +278,8 @@ if (isset($_POST['category']) && isset($_POST['gender'])) {
 	</div>
 	<div class="container-fluid padding">
 		<hr>
-		<a name="samsonite">
-			<h2 style="text-align: center;"><?php echo $filter = "Samsonite"; ?></h2>
+		<a name="jetstar">
+			<h2 style="text-align: center;"><?php echo $filter = "Jetstar"; ?></h2>
 		</a>
 		<?php
 		$sp = select_from($filter, $connection);
@@ -387,8 +291,8 @@ if (isset($_POST['category']) && isset($_POST['gender'])) {
 	</div>
 	<div class="container-fluid padding">
 		<hr>
-		<a name="hublot">
-			<h2 style="text-align: center;"><?php echo $filter = "Hublot"; ?></h2>
+		<a name="bamboo">
+			<h2 style="text-align: center;"><?php echo $filter = "Bamboo"; ?></h2>
 		</a>
 		<?php
 		$sp = select_from($filter, $connection);
@@ -399,8 +303,8 @@ if (isset($_POST['category']) && isset($_POST['gender'])) {
 	</div>
 	<div class="container-fluid padding">
 		<hr>
-		<a name="fossil">
-			<h2 style="text-align: center;"><?php echo $filter = "Fossil"; ?></h2>
+		<a name="Vietjet Air">
+			<h2 style="text-align: center;"><?php echo $filter = "Vietjet Air"; ?></h2>
 		</a>
 		<?php
 		$sp = select_from($filter, $connection);
@@ -411,8 +315,8 @@ if (isset($_POST['category']) && isset($_POST['gender'])) {
 	</div>
 	<div class="container-fluid padding">
 		<hr>
-		<a name="fendi">
-			<h2 style="text-align: center;"><?php echo $filter = "Fendi"; ?></h2>
+		<a name="Emirates">
+			<h2 style="text-align: center;"><?php echo $filter = "Emirates"; ?></h2>
 		</a>
 		<?php
 		$sp = select_from($filter, $connection);
@@ -423,8 +327,20 @@ if (isset($_POST['category']) && isset($_POST['gender'])) {
 	</div>
 	<div class="container-fluid padding">
 		<hr>
-		<a name="lipault">
-			<h2 style="text-align: center;"><?php echo $filter = "Lipault"; ?></h2>
+		<a name="Pacific Airlines">
+			<h2 style="text-align: center;"><?php echo $filter = "Pacific Airlines"; ?></h2>
+		</a>
+		<?php
+		$sp = select_from($filter, $connection);
+		foreach ($sp as $sp) {
+			include './detail_product.php';
+		}
+		?>
+	</div>
+	<div class="container-fluid padding">
+		<hr>
+		<a name="Vietjet Air">
+			<h2 style="text-align: center;"><?php echo $filter = "Vietjet Air"; ?></h2>
 		</a>
 		<?php
 		$sp = select_from($filter, $connection);
@@ -437,8 +353,8 @@ if (isset($_POST['category']) && isset($_POST['gender'])) {
 		<hr>
 		<h2 style="text-align: center;"><?php echo $filter = "Others"; ?></h2>
 		<?php
-		$sql = "SELECT * FROM Products WHERE brand != 'Victorinox' AND brand != 'samsonite' 
-		AND brand != 'hublot' AND brand != 'fendi' AND brand != 'fossil' AND brand != 'lipault';";
+		$sql = "SELECT * FROM Flight WHERE brand != 'Vietnam Airlines' AND brand != 'Jetstar' 
+		AND brand != 'Bamboo' AND brand != 'Vietjet Air' AND brand != 'Pacific Airlines' AND brand != 'Emirates';";
 		$statement = $connection->prepare($sql);
 		$statement->execute();
 		//Chế độ đọc dữ liệu ra

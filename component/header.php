@@ -62,7 +62,7 @@ $time = date("H:i");
 				foreach ($userName as $userName) {
 			?>
 					<p class="navbar-branch">
-						༼ つ ◕‿◕ ༽つHi...<?php echo $userName['userName']; ?>←(>▽<)ﾉ ⟵(๑¯◡¯๑) ☜ (↼_↼) ←(*꒪ヮ꒪*) ⟵(o_O) ｡.ﾟ+ ⟵(｡･ω･) </p>
+						༼ つ ◕‿◕ ༽つHi...<?php echo $userName['userName']; ?></p>
 					<?php
 				}
 			}
