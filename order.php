@@ -12,7 +12,7 @@
         $quantity = '';
         $dem =0;
         foreach( $bill as $bill) {
-            $productName = explode(", ", $bill['productName']);
+            $flightName = explode(", ", $bill['flightName']);
             $price = explode(", ", $bill['price']);
             $quantity = explode(", ", $bill['quantity']);
             
@@ -23,17 +23,17 @@
             <h3>Date order: <?php echo $bill['orderDate'];?></h3>
             <thead>
                 <tr>
-                    <th>Product Name</th>
+                    <th>Flight</th>
                     <th>Price</th>
                     <th>Quantity</th>
                 </tr>
             </thead>
             <?php
-                for( $i =0; $i < count($productName); $i++) {
+                for( $i =0; $i < count($flightName); $i++) {
             ?>
             <tbody>
                 <tr>
-                    <td><?php echo $productName[$i];?></td>
+                    <td><?php echo $flightName[$i];?></td>
                     <td><?php echo $price[$i];?>$</td>
                     <td><?php echo $quantity[$i];?></td>
                 </tr>
