@@ -10,7 +10,7 @@
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post"  enctype="multipart/form-data">
     <table>
     <?php 
-    $sql_update = "SELECT * FROM Products WHERE productId = $edit_id";
+    $sql_update = "SELECT * FROM Flight WHERE flightId = $edit_id";
     try {        
         $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);        
         $statement = $connection->prepare($sql_update);
@@ -20,35 +20,11 @@
         foreach ( $product as $product) {
     ?>
             <tr>
-                <td>Picture of product </td>
-                <td>
-                <?php
-                    $id = $product['productId'];
-                    $sql = "SELECT * FROM Image_Product WHERE productId = '$id'; ";
-                    $statement = $connection->prepare($sql);
-                    $statement->execute();
-                    //Chế độ đọc dữ liệu ra
-                    $result = $statement->setFetchMode ( PDO::FETCH_ASSOC);
-                    $img = $statement->fetchAll();
-                    $anh_sp = '';
-                    foreach( $img as $img) {
-                        $anh_sp = explode(', ', $img['imageUrls']);
-                    }
-                    foreach( $anh_sp as $anh_sp) {
-                ?>
-            <img style="width: 100px;" src="./Ảnh_sp/<?php echo $anh_sp;?>">
-            <?php
-                
-                }
-            ?>
-            </td>
+                <input type="hidden" name="id" value="<?php echo $product['flightId'];?>" id="">
             </tr>
             <tr>
-                <input type="hidden" name="id" value="<?php echo $product['productId'];?>" id="">
-            </tr>
-            <tr>
-                <td>Name: </td>
-                <td><input type="text" class="box" name="update_name" value="<?php echo $product['productName'];?>" id=""></td>      
+                <td>Brand: </td>
+                <td><input type="text" class="box" name="brand" value="<?php echo $product['brand'];?>" id=""></td>      
             </tr>
             <tr>
                 <td>Weight: </td>

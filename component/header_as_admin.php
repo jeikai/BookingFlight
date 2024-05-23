@@ -32,7 +32,7 @@
 		}
 	</style>
 </head>
-<body style="background: #84cdca;" >
+<body style="background: #ffffff;" >
 
 <!-- Navigation -->
 <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
@@ -51,7 +51,7 @@
 			foreach ( $userName as $userName) {
 		?>
 		<p class="navbar-branch">
-			༼ つ ◕‿◕ ༽つHi...<?php echo $userName['userName'];?>←(>▽<)ﾉ ⟵(๑¯◡¯๑) ☜ (↼_↼) ←(*꒪ヮ꒪*) ⟵(o_O) ｡.ﾟ+ ⟵(｡･ω･)
+			༼ つ ◕‿◕ ༽つHi...<?php echo $userName['userName'];?>
 		</p>
 		<?php
 			}

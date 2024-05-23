@@ -91,14 +91,33 @@ footer {
 input[type=text] {
     padding: 6px;
     width: 100%;
-    background: wheat;
+    background: #92e2ff;
     font-size: 17px;
     border-radius: 5px;
     }
 input[type=text]:hover {
-    background: rgb(183, 180, 180);
+    background: #0092c7;
 }
-
+input[type=date] {
+    padding: 6px;
+    width: 100%;
+    background: #92e2ff;
+    font-size: 17px;
+    border-radius: 5px;
+    }
+input[type=date]:hover {
+    background: #0092c7;
+}
+input[type=number] {
+    padding: 6px;
+    width: 100%;
+    background: #92e2ff;
+    font-size: 17px;
+    border-radius: 5px;
+    }
+input[type=number]:hover {
+    background: #0092c7;
+}
 .time {
     text-align: center;
     font-size: 100px;

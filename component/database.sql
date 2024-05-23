@@ -41,7 +41,7 @@ CREATE TABLE Flight(
     isRoundTrip INT
 );
 
-INSERT INTO Flight (flightId, startCity, endCity, startTime, endTime, totalCustomer, remainingCustomer, standardPrice, isRoundTrip)
+INSERT INTO Flight (flightId, brand, startCity, endCity, startTime, endTime, totalCustomer, remainingCustomer, standardPrice, isRoundTrip)
 VALUES
   (1, 'Vietnam Airlines','New York', 'Los Angeles', '2024-05-18 10:00:00', '2024-05-18 15:00:00', 150, 150, 250.00, 0),  
   (2, 'Jetstar', 'London', 'Paris', '2024-05-19 08:30:00', '2024-05-19 11:00:00', 100, 100, 180.50, 0), 
