@@ -10,6 +10,7 @@
                 <p class="card-text">End time: <?php echo $sp['endTime'];?></p>
                 <p class="card-text" >Total customers: <?php echo $sp['totalCustomer'];?></p>
                 <p class="card-text" >Remaining customers: <?php echo $sp['remainingCustomer'];?></p>
+                <p class="card-text" >Round trip: <?php echo $sp['isRoundTrip'] == 1 ? 'yes' : 'no';?></p>
                 <input type="hidden" class="card-text" name="price" value="<?php echo $sp['standardPrice'];?> ">
                 <p class="card-text">Price: <?php echo $sp['standardPrice'];?>$</p>
                 <input type="submit" class="btn btn-outline-secondary" value="add to cart" name="add_to_cart">

@@ -68,6 +68,9 @@ if (!isset($userId)) {
 						<a href="./upload_san_pham.php" class="nav-link">Upload</a>
 					</li>
 					<li class="nav-item">
+						<a href="./admin_user.php" class="nav-link">Users</a>
+					</li>
+					<li class="nav-item">
 						<a href="./stats.php" class="nav-link">Stats</a>
 					</li>
 					<li class="nav-item">

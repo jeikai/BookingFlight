@@ -47,7 +47,7 @@ $time = date("H:i");
 	<!-- Navigation -->
 	<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top" style="position: fixed;width: 100%;">
 		<div class="container-fluid">
-			<a class="navbar-branch" href="#">
+			<a class="navbar-branch" href="/home_page.php">
 				<img src="./Ảnh_website/logo.png" height="50">
 			</a>
 

@@ -106,6 +106,11 @@ if (isset($_POST['order'])) {
     $price = '';
     $quantity = '';
     foreach ($sp as $sp) {
+        // update so luong hanh khach
+        $update = "UPDATE Flight SET remainingCustomer = remainingCustomer - " . $sp['quantity'] . " WHERE flightId = " . $sp['flightId'] . ";";
+        $statement = $connection->prepare($update);
+        $statement->execute();
+
         $flightName .= $sp['flightId'] . ", ";
         $price .= $sp['price'] . ", ";
         $quantity .= $sp['quantity'] . ", ";
@@ -118,6 +123,7 @@ if (isset($_POST['order'])) {
         VALUES( '$Id_don_hang',  '$flightName', '$price', '$quantity', '$userId', '$orderDate', '$description', '$price_sum');";
     $statement = $connection->prepare($insert);
     $statement->execute();
+
     //Xoa gio hang
     $sql = "DELETE FROM OrderDetails WHERE userId = '$userId'";
     $statement = $connection->prepare($sql);

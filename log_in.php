@@ -28,7 +28,6 @@ if (isset($_POST['sign_in'])) {
 						header('Location: ./upload_san_pham.php');
 					}
 				} else {
-					echo "Có lỗi";
 					$error = "Wrong phone number or password";
 				}
 			}
@@ -88,9 +87,10 @@ if (isset($_POST['sign_in'])) {
 				</div>
 			</div>
 			<div class="register">
-				<a href="./register.php">recovery password</a>
+				<a href="./register.php">Register account</a>
 			</div>
 		</div>
+		<p style="color: red;"><?php echo $error?></p>
 	</form>
 </body>
 

@@ -83,7 +83,7 @@ if (isset($message)) {
 <!-- Search button -->
 <div class="search-container nav-link">
 	<form method="get" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-		<input type="text" placeholder="Search.." name="search">
+		<input type="text" placeholder="Search by destination.." name="search">
 	</form>
 </div>
 <!-- Time -->
@@ -236,7 +236,7 @@ if ($time > '21:15') {
 if (isset($_GET['search'])) {
 	$ket_qua = $_GET['search'];
 	$array = explode(" ", $ket_qua);
-	$name = "brand LIKE '%" . $ket_qua . "%'; ";
+	$name = "endCity LIKE '%" . $ket_qua . "%'; ";
 	// foreach( $array as $array) {
 	// 	$name .=	"productName LIKE '%".$array."%' OR ";
 	// }
@@ -293,18 +293,6 @@ if (isset($_GET['search'])) {
 		<hr>
 		<a name="bamboo">
 			<h2 style="text-align: center;"><?php echo $filter = "Bamboo"; ?></h2>
-		</a>
-		<?php
-		$sp = select_from($filter, $connection);
-		foreach ($sp as $sp) {
-			include './detail_product.php';
-		}
-		?>
-	</div>
-	<div class="container-fluid padding">
-		<hr>
-		<a name="Vietjet Air">
-			<h2 style="text-align: center;"><?php echo $filter = "Vietjet Air"; ?></h2>
 		</a>
 		<?php
 		$sp = select_from($filter, $connection);

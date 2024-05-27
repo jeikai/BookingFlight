@@ -17,7 +17,7 @@ foreach ($orders as $order) {
         $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $flightStatement =  $connection->prepare($flightSql);
         $flightStatement->execute();
-        $brand =  $flightStatement->fetch(); 
+        $brand =  $flightStatement->fetch();
         if ($brand) {
             if (!isset($brands[$brand[0]])) {
                 $brands[$brand[0]] = 0;
@@ -40,7 +40,7 @@ foreach ($brands as $brand) {
     <ul class="chart">
         <li>
             <?php
-            $percentage = ($brands['Bamboo'] / $sum) * 100;
+            $percentage = isset($brands['Bamboo']) ? ($brands['Bamboo'] / $sum) * 100 : 0;
 
             $title = 'Bamboo' . ' _ ' . $percentage . '%';
             $style = "height: " . $percentage . "%;";
@@ -49,7 +49,7 @@ foreach ($brands as $brand) {
         </li>
         <li>
             <?php
-            $percentage = ($brands['Jetstar'] / $sum) * 100;
+            $percentage = isset($brands['Jetstar']) ? ($brands['Jetstar'] / $sum) * 100 : 0;
 
             $title = 'Jetstar' . ' _ ' . $percentage . '%';
             $style = "height: " . $percentage . "%;";
@@ -58,7 +58,7 @@ foreach ($brands as $brand) {
         </li>
         <li>
             <?php
-            $percentage = ($brands['Vietjet Air'] / $sum) * 100;
+            $percentage = isset($brands['Vietjet Air']) ? ($brands['Vietjet Air'] / $sum) * 100 : 0;
 
             $title = 'Vietjet Air' . ' _ ' . $percentage . '%';
             $style = "height: " . $percentage . "%;";
@@ -67,7 +67,7 @@ foreach ($brands as $brand) {
         </li>
         <li>
             <?php
-            $percentage = ($brands['Vietnam Airlines'] / $sum) * 100;
+            $percentage = isset($brands['Vietnam Airlines']) ? ($brands['Vietnam Airlines'] / $sum) * 100 : 0;
 
             $title = 'Vietnam Airlines' . ' _ ' . $percentage . '%';
             $style = "height: " . $percentage . "%;";
@@ -76,7 +76,7 @@ foreach ($brands as $brand) {
         </li>
         <li>
             <?php
-            $percentage = ($brands['Emirates'] ?? 0 / $sum) * 100;
+            $percentage = isset($brands['Emirates']) ? ($brands['Emirates'] / $sum) * 100 : 0;
 
             $title = 'Emirates' . ' _ ' . $percentage . '%';
             $style = "height: " . $percentage . "%;";
@@ -85,16 +85,16 @@ foreach ($brands as $brand) {
         </li>
         <li>
             <?php
-            $percentage = ($brands['Pacific Airline'] ?? 0 / $sum) * 100;
+            $percentage = isset($brands['Pacific Airlines']) ? ($brands['Pacific Airlines'] / $sum) * 100 : 0;
 
-            $title = 'Pacific Airline' . ' _ ' . $percentage . '%';
+            $title = 'Pacific Airlines' . ' _ ' . $percentage . '%';
             $style = "height: " . $percentage . "%;";
             ?>
             <span style="<?php echo $style; ?>" title="<?php echo $title; ?>"></span>
         </li>
         <li>
             <?php
-            $percentage = ($brands['Others'] ?? 0 / $sum) * 100;
+            $percentage = isset($brands['Others']) ? ($brands['Others'] / $sum) * 100 : 0;
 
             $title = 'Others' . ' _ ' . $percentage . '%';
             $style = "height: " . $percentage . "%;";

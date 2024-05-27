@@ -64,7 +64,7 @@ if (isset($_GET['delete'])) {
 <head>
     <link rel="stylesheet" href="./css/upload_san_pham.css">
 </head>
-<h1 style="text-align: center;">Uploading Table</h1>
+<h1 style="text-align: center;">Create Flight</h1>
 <hr>
 <div style="margin-left: 300px;">
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
@@ -124,7 +124,7 @@ if (isset($_GET['delete'])) {
     <p style="color: red;"><?php echo $error_message ?? '' ?></p>
 </div>
 <caption>
-    <h2 class="title">Uploaded Flight</h2>
+    <h2 class="title">Manage Flight</h2>
 </caption>
 <table border="1px" width="100%" cellspacing="0" cellpadding="5px">
 
@@ -157,7 +157,7 @@ if (isset($_GET['delete'])) {
             <tr>
                 <td><?php echo $sp['flightId']; ?></td>
                 <td><?php echo $sp['brand']; ?></td>
-                <td><?php echo $sp['startCity']; ?>kg</td>
+                <td><?php echo $sp['startCity']; ?></td>
                 <td><?php echo $sp['endCity']; ?></td>
                 <td><?php echo $sp['startTime'] ?></td>
                 <td><?php echo $sp['endTime']; ?></td>
