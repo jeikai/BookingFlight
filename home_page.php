@@ -219,13 +219,13 @@ if ($time > '21:15') {
 			<a href="home_page.php?search=bamboo"><img src="./Ảnh_website/logo_3.png" alt="" style="width: 200px;height: 100px"></a>
 		</div>
 		<div class="col-md-2 ">
-			<a href="home_page.php?search=fossil"><img src="./Ảnh_website/logo_4.png" alt="" style="width: 200px; height: 100px"></a>
+			<a href="home_page.php?search=emirates"><img src="./Ảnh_website/logo_4.png" alt="" style="width: 200px; height: 100px"></a>
 		</div>
 		<div class="col-md-2 ">
-			<a href="home_page.php?search=fendi"><img src="./Ảnh_website/logo_5.png" alt="" style="width: 200px;height: 100px"></a>
+			<a href="home_page.php?search=pacific airline"><img src="./Ảnh_website/logo_5.png" alt="" style="width: 200px;height: 100px"></a>
 		</div>
 		<div class="col-md-2 ">
-			<a href="home_page.php?search=Lipault"><img src="./Ảnh_website/logo_6.png" alt="" style="width: 200px;height: 100px"></a>
+			<a href="home_page.php?search=Vietjet Air"><img src="./Ảnh_website/logo_6.png" alt="" style="width: 200px;height: 100px"></a>
 		</div>
 	</div>
 	<hr class="my-4">

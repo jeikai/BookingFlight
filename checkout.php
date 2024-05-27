@@ -25,9 +25,8 @@ include './component/header.php';
                 $sale = '';
                 if (count($sp) > 0) {
                     foreach ($sp as $sp) {
-                        $total_price = number_format($sp['price'] * $sp['quantity']);
+                        $total_price = (int) number_format($sp['price'] * $sp['quantity']); // Convert to integer
                         $grand_total = $total += $total_price;
-
                 ?>
                         <span><?= $sp['brand']; ?>(<?= $sp['quantity'] ?>)</span>
                 <?php
@@ -107,7 +106,7 @@ if (isset($_POST['order'])) {
     $price = '';
     $quantity = '';
     foreach ($sp as $sp) {
-        $flightName .= "FunAir_" . $Id_don_hang . ", ";
+        $flightName .= $sp['flightId'] . ", ";
         $price .= $sp['price'] . ", ";
         $quantity .= $sp['quantity'] . ", ";
     }

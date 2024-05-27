@@ -58,7 +58,7 @@ $time = date("H:i");
 				$statement = $connection->prepare($sql);
 				$statement->execute();
 				$statement->setFetchMode(PDO::FETCH_ASSOC);
-				$userName = $statement->fetchAll();
+				$userName = $statement->fetchAll(); 
 				foreach ($userName as $userName) {
 			?>
 					<p class="navbar-branch">

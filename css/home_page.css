@@ -98,14 +98,14 @@ input[type=text] {
 input[type=text]:hover {
     background: #0092c7;
 }
-input[type=date] {
+input[type=datetime-local] {
     padding: 6px;
     width: 100%;
     background: #92e2ff;
     font-size: 17px;
     border-radius: 5px;
     }
-input[type=date]:hover {
+input[type=datetime-local]:hover {
     background: #0092c7;
 }
 input[type=number] {

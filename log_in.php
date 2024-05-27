@@ -20,7 +20,7 @@ if (isset($_POST['sign_in'])) {
 			$statement->setFetchMode(PDO::FETCH_ASSOC);
 			$user = $statement->fetchAll();
 			foreach ($user as $user) {
-				if ($user['phoneNumber'] == $phone && $user['password'] == $password) {
+				if (($user['phoneNumber'] == $phone && $user['password'] == $password)) {
 					$_SESSION['userId'] = $user['userId'];
 					if ($user['role'] == 'user') {
 						header('Location: ./home_page.php');
@@ -34,8 +34,6 @@ if (isset($_POST['sign_in'])) {
 			}
 		}
 	}
-} else if (isset($_POST['register'])) {
-	header('Location: ./register.php');
 }
 
 ?>
@@ -53,35 +51,6 @@ if (isset($_POST['sign_in'])) {
 </head>
 
 <body style="background:#cbced3; ">
-	<!-- <div class="divtitle">
-	<div class="title">Fun LUGGAGE</div>
-	<div class="subtitle"><caption>Start your journey</caption></div>
-	</div>
-	<form action= "<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" >
-	<div class="login">
-		<div class="type">
-			<input type="number" placeholder="Phone number" class="textbox"  name="phone">
-		</div>
-		<div class="type">
-			<input type="password" placeholder="Password" class="textbox" name="password">
-		</div>
-		<div>
-			<p style="color: red;text-align: right;"><?php echo $error; ?></p>
-		</div>
-		<div class="type">
-			<input type="submit" value="Log In" class="logIn" name="sign_in">
-		</div>
-		<div class="type">
-			<a href="./forgot_password.php" class="forget_pass" name="forgot_pass">Forgotten password?</a>
-		</div>
-		<div >
-			<hr style="width: 90%;color: #e4e6e9;">
-		</div>
-		<div class="type">
-			<input type="submit" value="Create a new account" class="new_account" name="register">
-		</div>
-	</div>
-	</form> -->
 	<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
 		<div class="login">
 			<div class="title">Fun Flight</div>
@@ -89,7 +58,7 @@ if (isset($_POST['sign_in'])) {
 				Wellcome back
 			</div>
 			<div class="group">
-				<input type="number" placeholder="Enter your phone number" name="phone">
+				<input type="text" placeholder="Enter your phone number" name="phone">
 			</div>
 			<div class="group">
 				<input type="password" id="inputPassword" placeholder="Password" name="password">
@@ -119,7 +88,7 @@ if (isset($_POST['sign_in'])) {
 				</div>
 			</div>
 			<div class="register">
-				<input type="submit" value="Create a new account" class="new_account" name="register">
+				<a href="./register.php">recovery password</a>
 			</div>
 		</div>
 	</form>

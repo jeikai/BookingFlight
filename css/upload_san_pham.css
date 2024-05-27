@@ -24,7 +24,7 @@ a {
  }
  
  .edit-form-container form{
-    width: 50rem;
+    width: 50rem; 
     border-radius: .5rem;
     background-color: var(--white);
     text-align: center;

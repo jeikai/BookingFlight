@@ -5,17 +5,20 @@ $startCity = htmlspecialchars($_POST['startCity'] ?? '');
 $endCity = htmlspecialchars($_POST['endCity'] ?? '');
 $startTime = htmlspecialchars($_POST['startTime'] ?? '');
 $endTime = htmlspecialchars($_POST['endTime'] ?? '');
-$totalCustomer = htmlspecialchars($_POST['totalCustomer'] ?? '');
-$remainingCustomer = htmlspecialchars($_POST['remainingCustomer'] ?? '');
-$standardPrice = htmlspecialchars($_POST['standardPrice'] ?? '');
-$isRoundTrip = htmlspecialchars($_POST['isRoundTrip'] ?? '');
+$totalCustomer = htmlspecialchars($_POST['totalCustomer'] ?? 0);
+$remainingCustomer = htmlspecialchars($_POST['remainingCustomer'] ?? 0);
+$standardPrice = htmlspecialchars($_POST['standardPrice'] ?? 0);
+$isRoundTrip = htmlspecialchars($_POST['isRoundTrip'] ?? '') == '' ? 0 : 1;
+
 $flightId = time();
+
 if (isset($_POST['submit'])) {
 
-    if (empty($productName) || empty($weight) || empty($color) || empty($categoryName) || empty($price) || empty($brand)) {
+    if (empty($brand) || empty($startCity) || empty($endCity) || empty($startTime) || empty($endTime) || empty($totalCustomer) || empty($remainingCustomer) || empty($standardPrice)) {
         $error_message = "You must enter full information";
     } else {
         if ($connection != NULL) {
+            $standardPriceFloat = floatval($standardPrice);
             $sql = "SELECT COUNT(*) AS count FROM Flight WHERE startCity='$startCity' AND endCity='$endCity' AND startTime='$startTime' AND brand='$brand' ";
             try {
                 $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -24,15 +27,27 @@ if (isset($_POST['submit'])) {
                 $statement->setFetchMode(PDO::FETCH_ASSOC);
                 //Kiểm tra xem dữ liệu bản ghi đã tồn tại hay chưa
                 if (intval($statement->fetchAll()[0]['count']) > 0) {
-                    $error_message = "Sản phẩm đã tồn tại";
+                    $error_message = "Already existed";
                 } else {
 
-                    $sql = "INSERT INTO Flight(flightId, brand, startCity, endCity, startTime, endTime, totalCustomer, remainingCustomer) 
-                            VALUES(?, ?, ?, ?, ?, ?, ?, ?);";
-                    $connection->prepare($sql)->execute([$productId, $weight, $color, $price, $productName, $categoryName, $gender, $brand, $productId, $anh_sp]);
-                    $error_message = '<p style= "color: green;">Thêm sản phẩm thành công</p>';
+                    $sql = "INSERT INTO Flight(flightId, brand, startCity, endCity, startTime, endTime, totalCustomer, remainingCustomer, standardPrice, isRoundTrip) 
+                            VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+                    $connection->prepare($sql)->execute([
+                        $flightId,
+                        $brand,
+                        $startCity,
+                        $endCity,
+                        $startTime,
+                        $endTime,
+                        $totalCustomer,
+                        $remainingCustomer,
+                        $standardPriceFloat,
+                        $isRoundTrip
+                    ]);
+                    $error_message = '<p style= "color: green;">Add successfully</p>';
                 };
             } catch (PDOException $e) {
+                $error_message = $e;
                 echo "Cannot execute sql: " . $e->getMessage();
             }
         }
@@ -64,12 +79,12 @@ if (isset($_GET['delete'])) {
             </tr>
             <tr>
                 <td>Flight start: </td>
-                <td><input type="date" name="startTime" id="" require placeholder="Your flight start time"></td>
+                <td><input type="datetime-local" name="startTime" id="" require placeholder="Your flight start time"></td>
             </tr>
             <tr>
                 <td>Flight end: </td>
                 <td>
-                    <input type="date" name="endTime" require placeholder="Your flight end time">
+                    <input type="datetime-local" name="endTime" require placeholder="Your flight end time">
                 </td>
             </tr>
             <tr>
@@ -85,18 +100,22 @@ if (isset($_GET['delete'])) {
                 <td>
                     <input type="text" name="brand" list="listdata" id="data" placeholder="Brand name">
                     <datalist id="listdata">
-                        <option>VICTORINOX</option>
-                        <option>SAMONITE</option>
-                        <option>HUBLOT</option>
-                        <option>FOSSIL</option>
-                        <option>FENDI</option>
-                        <option>LIPAULT</option>
+                        <option>Vietnam Airlines</option>
+                        <option>Jetstar</option>
+                        <option>Bamboo</option>
+                        <option>Emirates</option>
+                        <option>Pacific Airlines</option>
+                        <option>Vietjet Air</option>
                     </datalist>
                 </td>
             </tr>
             <tr>
                 <td>Price: </td>
                 <td><input type="number" min=0 name="standardPrice" id="" require placeholder="Price of your flight"></td>
+            </tr>
+            <tr>
+                <td>Check if round trip: </td>
+                <td><input type="checkbox" name="isRoundTrip" id="" require></td>
             </tr>
         </table>
 
